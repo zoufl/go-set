@@ -155,8 +155,8 @@ func (s *threadSafeSet) String() string {
 }
 
 func (s *threadSafeSet) Range(f func(key, value interface{}) bool) {
-	s.Lock()
-	defer s.Unlock()
+	s.RLock()
+	defer s.RUnlock()
 
 	s.set.Range(f)
 }
